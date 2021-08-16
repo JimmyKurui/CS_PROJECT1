@@ -1,0 +1,6 @@
+.wrapper {
+    background: url(' {{ asset(img\doctor-pointing-to-blank-sign-poster-vector.webp) }} ');
+    background-attachment: cover;
+    opacity: 0.4;
+    z-index: -1;
+}
