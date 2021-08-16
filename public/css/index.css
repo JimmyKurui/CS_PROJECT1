@@ -5,20 +5,17 @@
     opacity: 0.9;
     z-index: 0;
     height: 100%;
-    position: relative;
     top: 20%;
     bottom: auto;
     /* overflow: hidden; */
 }
 .wrapper-pharmacy {
-    background: no-repeat url('../img/doctor-pointing-to-blank-sign-poster-vector.webp');
+    /* background: no-repeat url('../img/doctor-pointing-to-blank-sign-poster-vector.webp'); */
 }
 .wrapper {
     background: no-repeat url('../img/doctor-pointing-to-blank-sign-poster-vector.webp');
 }
 
 footer {
-    position: absolute;
-    bottom: 0; 
     height: 5rem;
 }

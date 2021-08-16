@@ -2,26 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pharmacy;
 use App\Models\Product;
 use GrahamCampbell\ResultType\Result;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Foreach_;
 
 class QueriesController extends Controller
 {
     public function show()
     {
         $search = request('search');
-        $productArray = Product::all();
+        $productArray = Pharmacy::all();
+        $key= 'name';
         $results = array();
-        dd($productArray[0]->pharmacy->name);
         // $count= count($productArray);
-        foreach ($productArray as $product)  
-        {
-            if ($search == $product->name)
+        foreach ($productArray as $product) {
+            $res = $product->products;
+            foreach($product as $item)
             {
-                $results[] = $product;
+                dd($item);
             }
-        }
+            # code..
+        } 
+       
+            
+            // if ($search == $product->products->name)
+            // {
+            //     dd($results[] = $product->products);
+            // }
+        
+    
+
         return view('queries.show', [
             'results' => $results
         ]);

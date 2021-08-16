@@ -29,30 +29,42 @@ class PharmaciesController extends Controller
           ]);
         // $imagePath = request('image')->store('licenses', 'public'); 
 
-        auth()->user()->pharmacies()->create($data);
-        return redirect('/pharmacy/'.auth()->user()->id);
+        auth()->user()->pharmacy()->create($data);
+        return redirect('/pharmacy/'.auth()->user()->pharmacy->id);
 
     }
 
     public function show (Pharmacy $pharmacy)
     {
+        $this->authorize('update', auth()->user()->pharmacy);
+
         return view('pharmacies.show', compact('pharmacy'));
     }
 
     public function edit(Pharmacy $pharmacy)
     {
+        $this->authorize('update', auth()->user()->pharmacy);
+
         return view('pharmacies.edit', compact('pharmacy'));
     }
 
     public function update(Pharmacy $pharmacy)
     {
+        $this->authorize('update', auth()->user()->pharmacy);
+
         $data = request()->validate([
             'telephone' => ['required', 'digits:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'location' => ['required', 'string'],
           ]);
           
-        $pharmacy->update($data);
-        return redirect('/pharmacy/'.auth()->user()->id);   
+        auth()->user()->$pharmacy->update($data);
+        return redirect('/pharmacy/'.$pharmacy->id);   
+    }
+
+    public function destroy(Pharmacy $pharmacy)
+    {
+        $pharmacy->delete();
+        return redirect('/home');
     }
 }

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register Pharmacy') }}</div>
+                <div class="card-header">{{ __('Update Pharmacy') }}</div>
 
                 <div class="card-body">
                     <form method="POST" enctype="multipart/form-data" action="/pharmacy/{{ $pharmacy->id }}">
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                     </form>
-                    <div class="bg-warning py-4">Contact Admin to change license registration of pharmacy</div>
+                    <div class="bg-warning py-4">Contact Admin to change license registration of pharmacy admin@test.com</div>
                 </div>
             </div>
         </div>

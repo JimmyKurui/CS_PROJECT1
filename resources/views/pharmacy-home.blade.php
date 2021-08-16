@@ -14,21 +14,20 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-10 offset-2">
                 <h2>Benefits</h2>
-                <p>thief</p>
-                <p>theirs</p>
-                <p>Analytics</p>
+                <p>Rich base of data to assist business decisions</p>
+                <p>Increased exposure</p>
+                <p>Clean and easy to use system</p>
                 <p>srefa</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <h2>Service Features</h3>
-                    <p>thief</p>
-                    <p>theirs</p>
-                    <p>Analytics</p>
-                    <p>srefa</p>
+            <div class="col-10 offset-2">
+                <h2>Service Features</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. ndae facilis verit</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. ndae facilis verit</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. ndae facilis verit</p>
             </div>
         </div>
     </div>

@@ -71,4 +71,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function update(array $data)
+    {
+        
+    }
 }

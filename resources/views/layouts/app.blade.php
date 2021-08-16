@@ -58,11 +58,20 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">Profile</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                     Profile 
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/profile/create">Create</a>
+                                    <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}">View</a>
+                                    <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}/edit">Edit</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/pharmacy/{{ Auth::user()->id }}">Pharmacy</a>
+                                @can('update', auth()->user()->pharmacy)
+                                 <a class="nav-link" href="/pharmacy/{{ Auth::user()->pharmacy->id }}">Pharmacy</a>
+                                @endcan
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -91,7 +100,7 @@
             @yield('content')
         </main>
 
-        <footer class="footer bg-dark w-100">
+        <footer class="footer bg-dark p-4 w-100">
             <div><a href="/pharmacy">For Pharmacies</a></div>
         </footer>
     </div>
