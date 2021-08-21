@@ -43,7 +43,7 @@
                             <label for="employed" class="col-md-4 col-form-label text-md-right">Employed</label>
 
                             <div class="col-md-6">
-                                <input id="employed" type="checkbox" class="form-control @error('employed') is-invalid @enderror" name="employed" value="{{ old('employed') ?? true }}" required autocomplete="employed" maxlength="10">
+                                <input id="employed" type="checkbox" class="form-control @error('employed') is-invalid @enderror" name="employed" value="{{ old('employed') ?? $user->profile->employed }}" required autocomplete="employed" maxlength="10">
 
                                 @error('employed')
                                     <span class="invalid-feedback" role="alert">

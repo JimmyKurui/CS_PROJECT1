@@ -13,18 +13,19 @@ class QueriesController extends Controller
     public function show()
     {
         $search = request('search');
-        $productArray = Pharmacy::all();
+        $productArray = Product::all();
+        $items = Pharmacy::all();
         $key= 'name';
         $results = array();
         // $count= count($productArray);
-        foreach ($productArray as $product) {
-            $res = $product->products;
-            foreach($product as $item)
-            {
-                dd($item);
+        foreach ($items as $item) {
+            foreach ($productArray as $product) {
+                if ($search == $product->name) {
+                    ($results[] = $product->products);
+                }
+                # code..
             }
-            # code..
-        } 
+        }
        
             
             // if ($search == $product->products->name)

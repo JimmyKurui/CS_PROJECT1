@@ -16,7 +16,7 @@
                             <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('Age') }}</label>
 
                             <div class="col-md-6">
-                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') }}" required autocomplete="age" autofocus>
+                                <input id="age" type="number" class="form-control @error('age') is-invalid @enderror" name="age" value="{{ old('age') ?? $user->profile->age }}" required autocomplete="age" autofocus>
 
                                 @error('age')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                             <label for="sex" class="col-md-4 col-form-label text-md-right">{{ __('Sex') }}</label>
 
                             <div class="col-md-6">
-                                <input id="sex" type="text" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') }}" required autocomplete="sex" placeholder="Male / Female">
+                                <input id="sex" type="text" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') ?? $user->profile->sex }}" required autocomplete="sex" placeholder="Male / Female">
 
                                 @error('sex')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             <label for="employed" class="col-md-4 col-form-label text-md-right">Employed</label>
 
                             <div class="col-md-6">
-                                <input id="employed" type="checkbox" class="form-control @error('employed') is-invalid @enderror" name="employed" value="{{ old('employed') }}" required autocomplete="employed" maxlength="10">
+                                <input id="employed" type="checkbox" class="form-control @error('employed') is-invalid @enderror" name="employed" value="{{ old('employed') ?? $user->profile->employed }}" required autocomplete="employed">
 
                                 @error('employed')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="conditions" class="col-md-4 col-form-label text-md-right">{{ __('Health Conditions') }}</label>
 
                             <div class="col-md-6">
-                                <input id="conditions" type="text" class="form-control @error('conditions') is-invalid @enderror" name="conditions" required autocomplete="new-conditions">
+                                <input id="conditions" type="text" class="form-control @error('conditions') is-invalid @enderror" name="conditions" value="{{ old('conditions') ?? $user->profile->conditions }}" required autocomplete="new-conditions">
 
                                 @error('conditions')
                                     <span class="invalid-feedback" role="alert">

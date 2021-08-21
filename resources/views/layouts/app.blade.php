@@ -66,7 +66,6 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile/create">Create</a>
                                     <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}">View</a>
-                                    <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}/edit">Edit</a>
                             </li>
                             <li class="nav-item">
                                 @can('update', auth()->user()->pharmacy)

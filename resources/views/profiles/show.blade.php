@@ -25,6 +25,16 @@
                        <dd class="col-sm-9">{{ $user->profile->employed }}</dd>
                     </dl>
                 </div>
+                <div class="d-flex">
+                    <a  href="/profile/{{ auth()->user()->id }}/edit" class="btn btn-primary">Edit Profile</a>
+                   <form method="POST" action="/profile/{{ $user->id }}">
+                    @csrf
+                    @method('DELETE')
+                        <button class="btn btn-danger" onclick="confirm('Do you want to delete your profile?')" name="delete-profile">Delete Profile</button>
+                        <!-- <button class="btn bg-dark" onclick="confirm('Do you want to delete your profile?')">Delete Profile</button> -->
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>

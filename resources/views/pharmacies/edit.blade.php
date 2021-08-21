@@ -16,7 +16,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Pharmacy Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $pharmacy->name }}" required autocomplete="name" autofocus disabled>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $pharmacy->name }}"  autofocus disabled>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                             <label for="reg_no" class="col-md-4 col-form-label text-md-right">Registration No:</label>
 
                             <div class="col-md-6">
-                                <input id="reg_no" type="text" class="form-control @error('reg_no') is-invalid @enderror" name="reg_no" value="{{ old('reg_no') ?? $pharmacy->reg_no }}" required autocomplete="reg_no" autofocus disabled>
+                                <input id="reg_no" type="text" class="form-control @error('reg_no') is-invalid @enderror" name="reg_no" value="{{ old('reg_no') ?? $pharmacy->reg_no }}"  autocomplete="reg_no" autofocus disabled>
 
                                 @error('reg_no')
                                     <span class="invalid-feedback" role="alert">
@@ -44,7 +44,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $pharmacy->email }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? $pharmacy->email }}"  autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="telephone" class="col-md-4 col-form-label text-md-right">Telephone</label>
 
                             <div class="col-md-6">
-                                <input id="telephone" type="tel" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') ?? $pharmacy->telephone }}" required autocomplete="telephone" maxlength="10">
+                                <input id="telephone" type="tel" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') ?? $pharmacy->telephone }}"  autocomplete="telephone" maxlength="10">
 
                                 @error('telephone')
                                     <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
                             <label for="location" class="col-md-4 col-form-label text-md-right">Location</label>
 
                             <div class="col-md-6">
-                                <input id="location" type="float" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') ?? $pharmacy->location }}" required autocomplete="new-location" placeholder="x-coordinate y-coordinate">
+                                <input id="location" type="float" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') ?? $pharmacy->location }}"  autocomplete="new-location" placeholder="x-coordinate y-coordinate">
 
                                 @error('location')
                                     <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                             <label for="image" class="col-md-4 col-form-label text-md-right">Upload PBB license</label>
                      
                             <div class="col-md-6">
-                                <input type="file" class="form-file-control" id="image" name="image" disabled>   
+                                <input type="file" class="form-file-control" id="image" name="image" >   
                                 @error('caption')
                                     
                                         <strong>{{ $message }}</strong>

@@ -53,12 +53,14 @@ class PharmaciesController extends Controller
         $this->authorize('update', auth()->user()->pharmacy);
 
         $data = request()->validate([
+            'name' => [],
+            'reg_no' => [],
             'telephone' => ['required', 'digits:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'location' => ['required', 'string'],
           ]);
           
-        auth()->user()->$pharmacy->update($data);
+        auth()->user()->pharmacy()->update($data);
         return redirect('/pharmacy/'.$pharmacy->id);   
     }
 

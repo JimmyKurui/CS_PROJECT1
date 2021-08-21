@@ -41,4 +41,5 @@ Route::post('/profile', [App\Http\Controllers\ProfilesController::class, 'store'
 Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'show']);
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update']);
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit']);
+Route::delete('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'destroy']);
 
