@@ -19,3 +19,8 @@
 footer {
     height: 5rem;
 }
+
+#map1 {
+    height: 50%;
+    width: auto;
+}
