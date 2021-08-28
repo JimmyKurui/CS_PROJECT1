@@ -12,6 +12,6 @@ class Product extends Model
 
     public function pharmacies()
     {
-        return $this->belongsToMany(Pharmacy::class);
+        return $this->belongsTo(Pharmacy::class);
     }
 }

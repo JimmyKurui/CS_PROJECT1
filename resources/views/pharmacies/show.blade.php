@@ -4,7 +4,7 @@
 <div class="pharmacy">
     <div class="container">
         <div class="row justify-content-center text-center">
-            <div class="w-100 py-5">
+            <div class="w-100 py-5 heading">
                 <h1>Pharmacy Dashboard</h1>
             </div>
 
@@ -34,12 +34,12 @@
                    <dd class="col-sm-9">{{ $pharmacy->location }}</dd>
                 </dl>
             
-                <div class="d-flex w-50 py-3 justify-content-between">
-                    <a href="/pharmacy/{{ $pharmacy->id }}/edit" class="btn btn-primary mr-3">Edit Pharmacy</a>
+                <div class="d-flex">
+                    <a href="/pharmacy/{{ $pharmacy->id }}/edit" class="btn btn-primary mr-4">Edit Pharmacy</a>
                     <form method="post" enctype="multipart/form-data" action="/pharmacy/{{ $pharmacy->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-secondary">Delete Pharmacy</button>
+                        <button class="btn btn-danger">Delete Pharmacy</button>
                     </form>
                 </div>
             </div>

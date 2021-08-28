@@ -29,7 +29,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
                     <div> <img src="img/helping-hands-giving-back.png" alt="" class="rounded mr-3" height="30px">   </div>
                     <div>MediCare</div>
                 </a>
