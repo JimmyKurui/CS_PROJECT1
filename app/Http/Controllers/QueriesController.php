@@ -12,24 +12,40 @@ use PhpParser\Node\Stmt\Foreach_;
 
 class QueriesController extends Controller
 {
-    public function show()
+    public function show($search)
     {
-        $search = request('search');
+        $post = request('search');
         $pharmacies = Pharmacy::all();
-        $count=0;
         $results = array();
         $resultPharmacy = array();
         // $count= count($productArray);
         foreach ($pharmacies as $pharmacy) {
             foreach($pharmacy->products as $product) {
-                if ($search == $product->name) {
+                if ($post or $search == $product->name) {
                     //Count rows where product->name = search
                     $count ++;
-                    $resultPharmacy = Pharmacy::find($product->pharmacy_id);
+                    $resultPharmacy[] = Pharmacy::find($product->pharmacy_id);
                     $results[] = $product;
                 }
             }
         }
+        
+        if ($search) {
+            $userData['data'] = $resultPharmacy;
+            $userData= json_encode($userData);
+            exit;
+        }
+         
         return view('queries.show', ['results' => $results, 'resultPharmacy' => $resultPharmacy,]);
-    }  
+    } 
+    
+    public function getUsers($search = 'Panadol'){
+
+        
+        
+        if ($search) {
+            $userData['data'] = $resultPharmacy;
+            $userData= json_encode($userData);
+            exit;
+     }
 }

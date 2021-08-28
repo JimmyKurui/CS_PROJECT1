@@ -35,6 +35,7 @@ Route::get('/product/{product}', [App\Http\Controllers\ProductsController::class
 Route::post('/product', [App\Http\Controllers\ProductsController::class, 'store']);
 
 Route::post('/query', [App\Http\Controllers\QueriesController::class, 'show']);
+Route::get('/query/{$search}', [App\Http\Controllers\QueriesController::class, 'show']);
 
 Route::get('/profile/create', [App\Http\Controllers\ProfilesController::class, 'create']);
 Route::post('/profile', [App\Http\Controllers\ProfilesController::class, 'store']);
