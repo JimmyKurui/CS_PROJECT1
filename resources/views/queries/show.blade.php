@@ -38,7 +38,6 @@
                                     <td>{{ $result->pharmacy_id }}</td>
                                     <td></td>
                                     <td>Coming Soon</td>
-                                    <td><a href="#"></a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -65,4 +64,8 @@
 </div>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Yid3pH1XBDlieAoYyzy3-PT2l-ZAt00&callback=initMap">
 </script>
+<script type="text/javascript">
+    
+</script>
+
 @endsection

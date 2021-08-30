@@ -1,4 +1,17 @@
 
+$resultPharmacy = JSON.parse($resultPharmacy);
+for (const key in $resultPharmacy) {
+    if (Object.hasOwnProperty.call($resultPharmacy, key)) {
+        const element = $resultPharmacy[key];
+        console.log(element.location);
+        
+    }
+}
+
+alert($resultPharmacy);
+
+
+
 // // Initialize and add the map
 function initMap() {
   // The location of Uluru
@@ -15,24 +28,35 @@ function initMap() {
   });
 }
 
-$(document).ready(function(){
 
-  // Fetch all records
-  $('#but_fetchall').click(function(){
-fetchRecords(0);
-  });
 
-  // Search by userid
-  $('#but_search').click(function(){
-     var userid = Number($('#search').val().trim());
+/* var xhr = new XMLHttpRequest();
+xhr.open('POST', '/query');
+xhr.onload = function() {
+  var $userData = this.response;
+  $userData = JSON.parse($userData);
+  alert($userData);
+};
+xhr.send(); */
+
+
+//   // Fetch all records
+//   $('#but_fetchall').click(function(){
+// fetchRecords(0);
+//   });
+
+//   // Search by userid
+//   $('#but_search').click(function(){;
+//      var userid = Number($('#search').val().trim());
    
-if(userid > 0){
- fetchRecords(userid);
-}
+     
+// if(userid > 0){
+//  fetchRecords(userid);
+// }
 
-  });
+//   });
 
-});
+// });
 
 function fetchRecords($search='Panadol'){
   $.ajax({

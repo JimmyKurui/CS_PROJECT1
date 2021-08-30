@@ -9,10 +9,11 @@ use Hamcrest\Arrays\IsArray;
 use Hamcrest\Core\IsTypeOf;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Foreach_;
+use Symfony\Component\Console\Input\Input;
 
 class QueriesController extends Controller
 {
-    public function show($search)
+    public function show()
     {
         $post = request('search');
         $pharmacies = Pharmacy::all();
@@ -21,31 +22,32 @@ class QueriesController extends Controller
         // $count= count($productArray);
         foreach ($pharmacies as $pharmacy) {
             foreach($pharmacy->products as $product) {
-                if ($post or $search == $product->name) {
+                if ($post == $product->name) {
                     //Count rows where product->name = search
-                    $count ++;
                     $resultPharmacy[] = Pharmacy::find($product->pharmacy_id);
                     $results[] = $product;
                 }
             }
         }
-        
-        if ($search) {
-            $userData['data'] = $resultPharmacy;
-            $userData= json_encode($userData);
-            exit;
-        }
-         
-        return view('queries.show', ['results' => $results, 'resultPharmacy' => $resultPharmacy,]);
-    } 
+    //     if ($search) {
+        $userData= 'hello';
+    $userData= ['id'=>'hello', 'name'=>'you', 'animal'=>'dog'];
+    // $userData = json_encode($userData);
     
-    public function getUsers($search = 'Panadol'){
+    // $userData= json_encode($userData);
+    //         exit;
+    //     }
+         
+         return view('queries.show', ['results' => $results, 'resultPharmacy' => $resultPharmacy, 'userData' => $userData]);
+    // } 
+    
+    // public function getUsers($search = 'Panadol'){
 
         
         
-        if ($search) {
-            $userData['data'] = $resultPharmacy;
-            $userData= json_encode($userData);
-            exit;
+    //     if ($search) {
+    //         $userData['data'] = $resultPharmacy;
+    //         $userData= json_encode($userData);
+    //         exit;
      }
 }

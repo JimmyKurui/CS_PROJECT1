@@ -14,8 +14,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script> -->
     <!-- <script src="js/bootstrap.js" defer></script> -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript"> 
+            var $resultPharmacy= '<?php echo json_encode($resultPharmacy) ?>';
+            
+     </script>
     <script src="{{ asset('js/index.js') }}" defer></script>
-
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -59,10 +62,11 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                     Profile 
-                                </a>
-
+                                @can('update', auth()->user()->profile)
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                         Profile 
+                                    </a>
+                                @endcan
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile/create">Create</a>
                                     <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}">View</a>
