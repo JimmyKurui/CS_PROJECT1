@@ -14,10 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script> -->
     <!-- <script src="js/bootstrap.js" defer></script> -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript"> 
-            var $resultPharmacy= '<?php echo json_encode($resultPharmacy) ?>';
-            
-     </script>
+    
     <script src="{{ asset('js/index.js') }}" defer></script>
 
     <!-- Fonts -->

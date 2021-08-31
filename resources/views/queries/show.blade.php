@@ -64,8 +64,8 @@
 </div>
 <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA9Yid3pH1XBDlieAoYyzy3-PT2l-ZAt00&callback=initMap">
 </script>
-<script type="text/javascript">
-    
+<script type="text/javascript" defer> 
+    var $resultPharmacy= '<?php echo json_encode($resultPharmacy) ?>';
 </script>
 
 @endsection
