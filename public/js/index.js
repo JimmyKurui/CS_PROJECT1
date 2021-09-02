@@ -33,9 +33,9 @@ if ($resultPharmacy) {
     for (let index = 0; index < positions.length; index++) {
       for (let index = 0; index < titles.length; index++) {
         markers[index] = addMarker(positions[index], map, titles[index]);
-        setMapOnAll(map);
       }
     }
+    setMapOnAll(map);
        
     
   }
