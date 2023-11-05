@@ -59,11 +59,9 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                @can('update', auth()->user()->profile)
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                          Profile 
                                     </a>
-                                @endcan
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/profile/create">Create</a>
                                     <a class="dropdown-item" href="/profile/{{ auth()->user()->id }}">View</a>

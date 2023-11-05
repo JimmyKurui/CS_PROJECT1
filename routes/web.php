@@ -33,6 +33,7 @@ Route::get('/product', [App\Http\Controllers\ProductsController::class, 'index']
 Route::get('/product/create', [App\Http\Controllers\ProductsController::class, 'create']);
 Route::get('/product/{product}', [App\Http\Controllers\ProductsController::class, 'show']);
 Route::post('/product', [App\Http\Controllers\ProductsController::class, 'store']);
+Route::delete('/product/{product}', [App\Http\Controllers\ProductsController::class, 'destroy']);
 
 // Route::post('/query', [App\Http\Controllers\QueriesController::class, 'show']);
 Route::post('/query', [App\Http\Controllers\QueriesController::class, 'show']);

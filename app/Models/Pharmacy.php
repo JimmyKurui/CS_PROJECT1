@@ -19,4 +19,14 @@ class Pharmacy extends Model
     {
         return $this->hasMany(Product::class)->orderBy('name', 'DESC');
     }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleted(function($pharmacy) { // before delete() method call this
+             $pharmacy->products()->delete();
+             // do the rest of the cleanup...
+        });
+    }
+
 }

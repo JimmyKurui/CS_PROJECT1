@@ -39,7 +39,7 @@
                     <form method="post" enctype="multipart/form-data" action="/pharmacy/{{ $pharmacy->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger">Delete Pharmacy</button>
+                        <button class="btn btn-danger" onclick="prompt('Are you sure')">Delete Pharmacy</button>
                     </form>
                 </div>
             </div>

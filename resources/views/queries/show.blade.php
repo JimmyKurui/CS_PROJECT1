@@ -36,7 +36,7 @@
                                     <td>{{ $result->category }}</td>
                                     <td>{{ $result->form }}</td>
                                     <td>{{ $result->pharmacy_id }}</td>
-                                    <td></td>
+                                    <td>{{ $result->price}}</td>
                                     <td>Coming Soon</td>
                                 </tr>
                                 @endforeach

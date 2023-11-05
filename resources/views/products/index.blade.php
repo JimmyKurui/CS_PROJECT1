@@ -24,6 +24,13 @@
                         <td>{{ $product->form }}</td>
                         <td>{{ $product->price }}</td>
                         <td>Coming Soon</td>
+                    <td class="btn bg-danger">
+                        <form method="post" enctype="multipart/form-data" action="/product/{{ $product->id }}">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                     </tr>
                     @endforeach
                 </tbody>

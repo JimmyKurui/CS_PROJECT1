@@ -33,7 +33,7 @@
                     <form method="POST" action="/profile/{{ $user->id }}">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger" onclick="confirm('Do you want to delete your profile?')" name="delete-profile">Delete Profile</button>
+                        <button class="btn btn-danger" onclick="confirm('This will remove you as a Medical user, are you sure?')" name="delete-profile">Delete Profile</button>
                         <!-- <button class="btn bg-dark" onclick="confirm('Do you want to delete your profile?')">Delete Profile</button> -->
                     </form>
 
