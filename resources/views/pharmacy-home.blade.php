@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="wrapper-pharmacy">
+<div class="wrapper pharmacy">
     <div class="container-fluid">
         <div class="row justify-content-center text-center">
             <div class="col-12 p-5">

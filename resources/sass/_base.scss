@@ -1,0 +1,77 @@
+html,
+body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #f5f5f5;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-decoration: underline;
+}
+
+.heading {
+    font-size: 1.2rem;
+}
+
+.rainbow-btn {
+    position: relative;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 2;
+    backdrop-filter: blur(4px);
+    transition: transform 1s ease, box-shadow 0.3s ease;
+
+    &::before,
+    &::after {
+        content: "";
+        background: conic-gradient(
+            from var(--angle),
+            red,
+            orange,
+            yellow,
+            green,
+            blue,
+            indigo,
+            violet,
+            red
+        );
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        padding: 3px;
+        border-radius: 8px;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+    }
+
+    &:hover {
+        transform: translateY(-10px) scale(1.2);
+        box-shadow: 0px 0px 48px 14px rgb(255, 255, 255, 0.5);
+
+        &::before,
+        &::after {
+            filter: blur(4px);
+            animation: spin-angle 3s ease-in-out infinite;
+        }
+    }
+}

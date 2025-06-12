@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="wrapper-pharmacy-other">
+    <div class="wrapper pharmacy other">
         <div class="row justify-content-center text-center">
             <div class="col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

@@ -1,0 +1,23 @@
+.slide-left {
+    transform: translateX(-50%);
+}
+.slide-right {
+    transform: translateX(50%);
+}
+.slide-fade-in {
+    opacity: 0;
+    transition: opacity 1s ease, transform 1s ease;
+}
+.slide-fade-in.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes spin-angle {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
