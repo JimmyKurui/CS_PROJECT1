@@ -5,6 +5,9 @@
  */
 
 require('./bootstrap');
+require('./index');
+// import 'bootstrap';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 window.Vue = require('vue').default;
 

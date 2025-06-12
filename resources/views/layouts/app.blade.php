@@ -4,19 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token --> 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Dashboard</title>
+    <title>@yield('title')</title>
 
-    <!-- Scripts -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" defer></script> -->
-    <!-- <script src="js/bootstrap.js" defer></script> -->
     <script src="{{ asset('js/app.js') }}"></script>
-    
-    <script src="{{ asset('js/index.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -100,6 +92,12 @@
 
         <footer class="footer bg-dark p-4 w-100">
             <div><a href="/pharmacy">For Pharmacies</a></div>
+            <div class="container text-center py-3">
+                <p class="mb-0">© {{ date('Y') }} 
+                    <a href="https://github.com/JimmyKurui/CS_PROJECT1" class="text-decoration-none">Jimmy Chepkurui</a>
+                    All rights reserved
+                </p>
+            </div>
         </footer>
     </div>
 </body>
