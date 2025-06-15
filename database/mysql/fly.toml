@@ -1,0 +1,27 @@
+# fly.toml app configuration file generated for mysql-medicare on 2025-06-12T16:36:30+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'mysql-medicare'
+primary_region = 'jnb'
+
+[build]
+  image = 'mysql:8'
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[processes]
+  app = """--datadir /data/mysql \
+    --default-authentication-plugin mysql_native_password"""
+
+[mounts]
+  source = "mysqldata"
+  destination = "/data/mysql"
+
+[env]
+  MYSQL_DATABASE = "medicare"
+  MYSQL_USER = "jkurui"
