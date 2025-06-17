@@ -1,8 +1,8 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #e0fbfc;
 
 // Typography
-$font-family-sans-serif: 'Nunito', sans-serif;
+$font-family-sans-serif: "Nunito", sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
@@ -18,8 +18,52 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
+// Neutral color palette
+$neutral-100: #e0fbfcff;
+$neutral-200: #c2dfe3ff;
+$neutral-300: #9db4c0ff;
+$neutral-400: #5c6b73ff;
+$neutral-500: #253237ff;
+
+// Theme colors
+$jet: #353535ff;
+$caribbean-current: #3c6e71ff;
+$white: #ffffffff;
+$platinum: #d9d9d9ff;
+$indigo-dye: #284b63ff;
+
 @property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@mixin theme-light {
+    --color-primary: #{$caribbean-current};
+    --color-secondary: #{$white};
+    --color-accent: #{$indigo-dye};
+    --color-background: #{$body-bg};
+    --color-surface: #{$white};
+    --color-border: #{$platinum};
+    --color-text: #{$jet};
+    --color-text-light: #{$neutral-300};
+}
+
+@mixin theme-dark {
+    --color-primary: #{$indigo-dye};
+    --color-secondary: #{$white};
+    --color-accent: #{$caribbean-current};
+    --color-background: #{$platinum};
+    --color-surface: #{$jet};
+    --color-border: #{$platinum};
+    --color-text: #{$neutral-200};
+    --color-text-light: #{$neutral-100};
+}
+
+:root {
+    @include theme-light;
+}
+
+[data-theme="dark"] {
+    @include theme-dark;
 }
