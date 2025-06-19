@@ -9,7 +9,7 @@ class Pharmacy extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -17,16 +17,19 @@ class Pharmacy extends Model
 
     public function products()
     {
-        return $this->hasMany(Product::class)->orderBy('name', 'DESC');
+        return $this->belongsToMany(Product::class)
+            ->using(PharmacyProduct::class)
+            ->withPivot(['stock_level_id', 'price_range_id'])
+            ->withTimestamps();
     }
 
-    public static function boot() {
+
+    public static function boot()
+    {
         parent::boot();
 
-        static::deleted(function($pharmacy) { // before delete() method call this
-             $pharmacy->products()->delete();
-             // do the rest of the cleanup...
+        static::deleted(function ($pharmacy) { // before delete() method call this
+            $pharmacy->products()->delete();
         });
     }
-
 }

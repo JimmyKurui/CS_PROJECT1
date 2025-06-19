@@ -12,6 +12,9 @@ class Product extends Model
 
     public function pharmacies()
     {
-        return $this->belongsTo(Pharmacy::class);
+        return $this->belongsToMany(Pharmacy::class)
+            ->using(PharmacyProduct::class)
+            ->withPivot(['price_range_id', 'stock_level_id'])
+            ->withTimestamps();
     }
 }
