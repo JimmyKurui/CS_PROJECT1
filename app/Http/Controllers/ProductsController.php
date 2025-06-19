@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ProductsController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function index()
     {
@@ -35,13 +35,13 @@ class ProductsController extends Controller
           ]);
 
         auth()->user()->pharmacy->products()->create($data);
-        return redirect('/product');
+        return redirect()->route('products');
 
     }
 
     public function destroy (Product $product) {
         $product->delete();
-        return redirect('/product');
+        return redirect()->route('products');
     }
     
 }

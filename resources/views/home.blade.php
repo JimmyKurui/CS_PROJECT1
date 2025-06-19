@@ -9,7 +9,7 @@
                 <h1>Type a product below</h1>
             </div>
             <div class="col-6 pb-4">
-                <form id="query-form" method="POST" action="/query">
+                <form id="query-form" method="POST" action="{{ route('query') }}" class="form-inline">
                     @csrf
 
                     <div class="row g-1">
@@ -22,13 +22,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                            <button class="col-auto btn primary-btn"  onsubmit="/*function yourFunction(){ -->
-                                     var action_src = $('search').val(); 
-                                    var your_form= $('query-form').val(); 
-                                    var urlLink='/query/'; 
-                                    urlLink=urlLink + action_src; 
-                                    your_form.action=urlLink; } */ ">
-                            Search</button>
+                        <button class="col-auto btn primary-btn" >Search</button>
                     </div>
                 </form>
             </div>

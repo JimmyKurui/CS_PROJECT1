@@ -13335,10 +13335,9 @@ table .pills-cell .material-icons {
   height: 100%;
   top: 20%;
   bottom: auto;
-  /* overflow: hidden; */
 }
 .wrapper.pharmacy {
-  background: no-repeat url("/img/doctor-pointing-to-blank-sign-poster-vector.webp");
+  background: none;
 }
 .wrapper::before {
   background-size: contain;

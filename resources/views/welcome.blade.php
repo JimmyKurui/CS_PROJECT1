@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
-<body class="bg-gray">
+<body class="bg-gray" data-theme="dark">
     <div class="hero-welcome">
         <header class="video-background">
             <video playsinline autoplay loop muted preload="auto">

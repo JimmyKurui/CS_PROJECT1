@@ -9,7 +9,7 @@ class PharmaciesController extends Controller
 {
     public function index()
     {
-        return view('pharmacy-home');
+        return view('pharmacies.index');
     }
 
     public function create()
@@ -17,9 +17,9 @@ class PharmaciesController extends Controller
         return view('pharmacies.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        $data = request()->validate([
+        $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'reg_no' => ['required', 'string', 'max:255', 'unique:pharmacies'],
             'telephone' => ['required', 'digits:10'],
@@ -29,9 +29,8 @@ class PharmaciesController extends Controller
           ]);
         // $imagePath = request('image')->store('licenses', 'public'); 
 
-        auth()->user()->pharmacy()->create($data);
-        return redirect('/pharmacy/'.auth()->user()->pharmacy->id);
-
+        auth()->user()->pharmacy->create($data);
+        return redirect()->route('pharmacies.show', auth()->user()->pharmacy);
     }
 
     public function show (Pharmacy $pharmacy)
@@ -48,11 +47,11 @@ class PharmaciesController extends Controller
         return view('pharmacies.edit', compact('pharmacy'));
     }
 
-    public function update(Pharmacy $pharmacy)
+    public function update(Request $request, Pharmacy $pharmacy)
     {
         $this->authorize('update', auth()->user()->pharmacy);
 
-        $data = request()->validate([
+        $data = $request->validate([
             'name' => [],
             'reg_no' => [],
             'telephone' => ['required', 'digits:10'],
@@ -60,13 +59,14 @@ class PharmaciesController extends Controller
             'location' => ['required', 'string'],
           ]);
           
-        auth()->user()->pharmacy()->update($data);
-        return redirect('/pharmacy/'.$pharmacy->id);   
+        auth()->user()->pharmacy->update($data);
+        return redirect()->route('pharmacies.show', auth()->user()->pharmacy);
     }
 
     public function destroy(Pharmacy $pharmacy)
     {
+        $this->authorize('update', auth()->user()->pharmacy);
         $pharmacy->delete();
-        return redirect('/home');
+        return redirect()->route('home');
     }
 }

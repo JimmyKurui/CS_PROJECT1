@@ -6,9 +6,10 @@
     height: 100%;
     top: 20%;
     bottom: auto;
-    /* overflow: hidden; */
+    // /* overflow: hidden; */
+
     &.pharmacy {
-        background: no-repeat url("/img/doctor-pointing-to-blank-sign-poster-vector.webp");
+        background: none;
     }
     &::before {
         background-size: contain;
