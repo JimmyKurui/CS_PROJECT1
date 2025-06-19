@@ -13,41 +13,18 @@ use Symfony\Component\Console\Input\Input;
 
 class QueriesController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
-        $post = request('search');
-        $pharmacies = Pharmacy::all();
-        $results = array();
-        $resultPharmacy = array();
-        // $count= count($productArray);
-        foreach ($pharmacies as $pharmacy) {
-            foreach($pharmacy->products as $product) {
-                if ($post == $product->name) {
-                    //Count rows where product->name = search
-                    $resultPharmacy[] = Pharmacy::find($product->pharmacy_id);
-                    $results[] = $product;
-                }
-            }
-        }
-    //     if ($search) {
-        $userData= 'hello';
-    $userData= ['id'=>'hello', 'name'=>'you', 'animal'=>'dog'];
-    // $userData = json_encode($userData);
-    
-    // $userData= json_encode($userData);
-    //         exit;
-    //     }
-         
-         return view('queries.show', ['results' => $results, 'resultPharmacy' => $resultPharmacy, 'userData' => $userData]);
-    // } 
-    
-    // public function getUsers($search = 'Panadol'){
+        $validatedData = $request->validate([
+            'search' => 'required|string|max:255',
+        ]);
+        $search = str_replace('_', '', strip_tags(trim($validatedData['search'])));
+        $escapedSearch = addcslashes($search, '%');
 
-        
-        
-    //     if ($search) {
-    //         $userData['data'] = $resultPharmacy;
-    //         $userData= json_encode($userData);
-    //         exit;
-     }
+        $products = Product::with(['pharmacies:name,telephone'])
+            ->where('name', 'LIKE', '%' . $escapedSearch . '%')
+            ->get();
+
+        return view('queries.show', compact('products'));
+    }
 }

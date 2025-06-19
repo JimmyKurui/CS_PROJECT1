@@ -13195,7 +13195,6 @@ nav a {
   color: var(--color-secondary);
   background-color: var(--color-accent);
 }
-
 .primary-btn:hover {
   color: var(--color-text);
   background-color: transparent;
@@ -13242,6 +13241,30 @@ nav a {
 .rainbow-btn:hover::before, .rainbow-btn:hover::after {
   filter: blur(4px);
   animation: spin-angle 3s ease-in-out infinite;
+}
+
+table .pills-cell {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+table .pills-cell .badge {
+  width: 33%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0.25rem 0.5rem;
+}
+table .pills-cell span {
+  display: inline-block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+table .pills-cell .material-icons {
+  font-size: 1em;
+  color: var(--color-secondary);
 }
 
 .slide-left {
