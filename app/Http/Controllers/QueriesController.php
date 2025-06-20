@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pharmacy;
 use App\Models\Product;
-use GrahamCampbell\ResultType\Result;
-use Hamcrest\Arrays\IsArray;
-use Hamcrest\Core\IsTypeOf;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Foreach_;
-use Symfony\Component\Console\Input\Input;
+use App\Helpers\InputSanitizer;
+use App\Models\Pharmacy;
 
 class QueriesController extends Controller
 {
@@ -17,14 +13,37 @@ class QueriesController extends Controller
     {
         $validatedData = $request->validate([
             'search' => 'required|string|max:255',
+            'longitude' => 'required|numeric',
+            'latitude' => 'required|numeric',
         ]);
-        $search = str_replace('_', '', strip_tags(trim($validatedData['search'])));
-        $escapedSearch = addcslashes($search, '%');
+        $search = InputSanitizer::sanitizeSearchQuery($validatedData['search']);
+        $longitude = InputSanitizer::sanitizeLongitude($validatedData['longitude']);
+        $latitude = InputSanitizer::sanitizeLatitude($validatedData['latitude']);
 
-        $products = Product::with(['pharmacies:name,telephone'])
-            ->where('name', 'LIKE', '%' . $escapedSearch . '%')
+        $radiusMeters = config('constants.PHARMACY_RADIUS_METERS');
+        $radiusExtMeters = config('constants.PHARMACY_RADIUS_EXT_METERS');
+        $radiusMaxMeters = config('constants.PHARMACY_RADIUS_MAX_METERS');
+        $products = collect();
+
+        for($radius = $radiusMeters; $radius < $radiusMaxMeters; $radius += $radiusExtMeters) {
+            $pharmacies = Pharmacy::distanceMeters($latitude, $longitude, $radius)->get();
+            if ($pharmacies->isEmpty()) {
+                continue;
+            }
+            $pharmacyIds = $pharmacies->pluck('id')->toArray();
+            $products = Product::whereHas('pharmacies', function($query) use ($pharmacyIds) {
+                $query->whereIn('pharmacy_id', $pharmacyIds);
+            })
+            ->with('pharmacies', function($query) use ($pharmacyIds) {
+                $query->whereIn('pharmacy_id', $pharmacyIds);
+            })
+            ->where('name', 'LIKE', '%' . $search . '%')
             ->get();
-
-        return view('queries.show', compact('products'));
+            if ($products->isEmpty()) {
+                continue;
+            }
+            break;
+        }
+        return view('queries.show', compact('products', 'radius'));
     }
 }

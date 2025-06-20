@@ -11,9 +11,6 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
-
-    
 } catch (e) {
     console.error("Bootstrap or jQuery could not be loaded. " + e.message);
 }

@@ -1,15 +1,15 @@
-// Initialize and add the map
-function initMap() {
-  const nairobi = { lat: -1.300, lng: 36.84434 };
-  const map = new google.maps.Map(document.getElementById("map1"), {
-    zoom: 12,
-    center: nairobi,
-  });
-  const marker = new google.maps.Marker({
-    position: nairobi,
-    map: map,
-  });
-}
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix icon paths (for Laravel Mix)
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+    iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+    iconUrl: require('leaflet/dist/images/marker-icon.png'),
+    shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
+
+window.L = L;
 
 $(document).ready(function () {
   $('#but_fetchall').click(function () {
@@ -23,7 +23,7 @@ $(document).ready(function () {
       fetchRecords(userid);
     }
   });
-  // alert('I"m alive')
+
   $(window).on('load', function () {
     setTimeout(() => {
       $('section.about .slide-fade-in.slide-left').addClass('visible');
@@ -64,7 +64,7 @@ function fetchRecords($search = 'Panadol') {
         }
       } else {
         var tr_str = "<tr>" +
-            "<td colspan='4'>No record found.</td>" +
+          "<td colspan='4'>No record found.</td>" +
           "</tr>";
         $("#results-table tbody").append(tr_str);
       }

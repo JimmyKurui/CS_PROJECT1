@@ -22,7 +22,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <button class="col-auto btn primary-btn" >Search</button>
+                        <button type="submit" class="col-auto btn primary-btn" >Search</button>
                     </div>
                 </form>
             </div>
@@ -31,3 +31,35 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    $('#query-form').on('submit', function(e) {
+        e.preventDefault();
+        let search = $('#search').val().trim();
+        if (search.length < 1) {
+            alert('Please enter a product name.');
+            return;
+        }
+        navigator.geolocation.getCurrentPosition(function(position) {
+            let lat = position.coords.latitude;
+            let lng = position.coords.longitude;
+
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'latitude',
+                value: lat
+            }).appendTo('#query-form');
+
+            $('<input>').attr({
+                type: 'hidden',
+                name: 'longitude',
+                value: lng
+            }).appendTo('#query-form');
+
+            $('#query-form')[0].submit();
+        }, function() {
+            alert('Unable to retrieve your location. Please allow location access and try again.');
+        });
+    });
+</script>
+@endpush

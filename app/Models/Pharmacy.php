@@ -10,6 +10,15 @@ class Pharmacy extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleted(function ($pharmacy) { // before delete() method call this
+            $pharmacy->products()->delete();
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -23,13 +32,13 @@ class Pharmacy extends Model
             ->withTimestamps();
     }
 
-
-    public static function boot()
+    public function scopeDistanceMeters($query, $latitude, $longitude, $radiusMeters)
     {
-        parent::boot();
-
-        static::deleted(function ($pharmacy) { // before delete() method call this
-            $pharmacy->products()->delete();
-        });
+        return $query->selectRaw(
+            "*, ( 6371000 * acos( cos( radians(?) ) * cos( radians( latitude ) ) * cos( radians( longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( latitude ) ) ) ) AS distance",
+            [$latitude, $longitude, $latitude]
+        )
+            ->having('distance', '<=', $radiusMeters)
+            ->orderBy('distance');
     }
 }
