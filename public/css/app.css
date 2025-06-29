@@ -13144,8 +13144,8 @@ textarea.form-control-lg {
   --color-primary: #3c6e71ff;
   --color-secondary: #ffffffff;
   --color-accent: #284b63ff;
-  --color-background: #e0fbfc;
-  --color-surface: #ffffffff;
+  --color-background: #f8f9fa;
+  --color-surface: #31aab1;
   --color-border: #d9d9d9ff;
   --color-text: #353535ff;
   --color-text-light: #9db4c0ff;
@@ -13162,43 +13162,85 @@ textarea.form-control-lg {
   --color-text-light: #e0fbfcff;
 }
 
-html,
-body {
-  width: 100vw;
-  overflow-x: hidden;
-}
-
 body {
   font-family: "Nunito", sans-serif;
   background-color: var(--color-background);
   color: var(--color-text);
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 main {
   min-height: calc(100vh - 200px);
+  padding: 1rem;
 }
 
-nav a {
-  color: #f5f5f5;
+footer {
+  background-color: var(--color-text);
+}
+footer *, footer a {
+  color: var(--color-secondary);
+}
+
+nav.navbar {
+  position: sticky;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.46) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.5px);
+  -webkit-backdrop-filter: blur(7.5px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+nav.navbar a {
+  letter-spacing: 2px;
+}
+nav.navbar a.navbar-brand {
+  text-decoration: none;
+}
+
+a,
+nav.navbar a {
+  color: var(--color-text);
+  transition: color 0.3s ease;
   font-weight: 600;
-  letter-spacing: 3px;
-  text-decoration: underline;
+}
+a:hover,
+nav.navbar a:hover {
+  color: var(--color-primary);
+}
+
+section {
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .heading {
   font-size: 1.2rem;
 }
 
+.btn {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
 .primary-btn {
   color: var(--color-secondary);
-  background-color: var(--color-accent);
+  background-color: var(--color-primary);
 }
 .primary-btn:hover {
+  color: var(--color-accent);
+  background-color: transparent;
+  border: 2px solid var(--color-accent);
+}
+
+.secondary-btn {
   color: var(--color-text);
   background-color: transparent;
   border: 2px solid var(--color-text);
+}
+.secondary-btn:hover {
+  color: var(--color-secondary);
+  background-color: var(--color-accent);
 }
 
 .rainbow-btn {
@@ -13326,9 +13368,422 @@ table .pills-cell .material-icons {
   position: relative;
   min-height: 100vh;
 }
+.hero-welcome footer {
+  background: none;
+}
+
+body:has(.wrapper.pharmacy) main {
+  margin-top: -60px;
+}
+body:has(.wrapper.pharmacy) nav.navbar .nav-link:not(.navbar-brand) {
+  color: var(--color-background);
+}
+body:has(.wrapper.pharmacy) nav.navbar .nav-link:not(.navbar-brand):hover {
+  color: var(--color-primary);
+}
+
+.benefits-content {
+  height: 300px;
+  padding: 3rem 5rem 0;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(var(--color-border), 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  margin: 17rem 0 0 -3rem;
+  transform: translate(-5%, -10%);
+}
+.benefits-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+  border-radius: 16px;
+  z-index: -1;
+}
+.benefits-content ol {
+  list-style: none;
+  counter-reset: custom-counter;
+  padding-left: 0;
+  transform: translate(3rem, 0);
+}
+.benefits-content ol li {
+  counter-increment: custom-counter;
+  position: relative;
+  padding-left: 2.5em;
+  margin-bottom: 1em;
+}
+.benefits-content ol li::before {
+  content: counter(custom-counter);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, #d9d9d9, #f0f8ff);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.wrapper.pharmacy .hero {
+  display: flex;
+  margin: 0 auto 2rem;
+  padding: 0rem 1rem;
+  justify-content: center;
+  align-self: center;
+}
+@media (max-width: 767px) {
+  .wrapper.pharmacy .hero .hero-image > img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    mask: linear-gradient(to top, black 70%, transparent 100%), linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask: linear-gradient(to top, black 70%, transparent 100%), linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+  }
+}
+@media (min-width: 768px) {
+  .wrapper.pharmacy .hero .hero-content > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-28%, -50%);
+    width: 45vmax;
+    padding-top: 9vmin;
+  }
+  .wrapper.pharmacy .hero .hero-image > img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    mask: radial-gradient(circle at left center, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.02) 32%, black 100%), linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask: radial-gradient(circle at left center, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.02) 32%, black 100%), linear-gradient(to bottom, black 70%, transparent 100%);
+    mask-composite: intersect;
+    -webkit-mask-composite: destination-in;
+  }
+}
+.wrapper.pharmacy .mission {
+  position: relative;
+  color: var(--color-secondary);
+  background: url("/images/mariano-baraldi-IIBRFPj5LQk-unsplash.jpg") no-repeat center center/cover;
+  border-radius: 20px;
+}
+.wrapper.pharmacy .mission::before {
+  content: "";
+  border-radius: 20px;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 30%, black 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.wrapper.pharmacy .mission .container {
+  position: relative;
+  z-index: 3;
+}
+.wrapper.pharmacy .benefits {
+  display: flex;
+  position: relative;
+  margin: 3rem auto;
+}
+@media (max-width: 767px) {
+  .wrapper.pharmacy .benefits .benefits-image img {
+    margin-bottom: -3rem;
+    padding: 0 3rem;
+  }
+  .wrapper.pharmacy .benefits .benefits-content {
+    height: auto;
+    margin: 0;
+    padding: 10px;
+  }
+  .wrapper.pharmacy .benefits .benefits-content ol {
+    transform: none;
+  }
+}
+@media (min-width: 768px) {
+  .wrapper.pharmacy .benefits .benefits-image {
+    height: 280px;
+    width: 40vw;
+    margin: 0 0 0 -1vw;
+    scale: 1.2;
+    overflow: clip;
+    transition: scale 1s ease-in-out;
+  }
+}
+.wrapper.pharmacy .testimonials .card-body {
+  background-color: var(--color-secondary);
+}
+.wrapper.pharmacy .testimonials .card-footer {
+  background-color: rgba(var(--color-accent), 0.5);
+}
+
+.how-it-works .hexa {
+  border: 0px;
+  float: left;
+  text-align: center;
+  height: 35px;
+  width: 60px;
+  font-size: 22px;
+  background: #f0f0f0;
+  color: #3c3c3c;
+  position: relative;
+  margin-top: 15px;
+}
+.how-it-works .hexa:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 15px solid #f0f0f0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  top: -15px;
+}
+.how-it-works .hexa:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  border-top: 15px solid #f0f0f0;
+  bottom: -15px;
+}
+.how-it-works .timeline {
+  position: relative;
+  padding: 0;
+  width: 100%;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.how-it-works .timeline:before {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  content: " ";
+  display: block;
+  width: 2px;
+  height: 100%;
+  margin-left: -1px;
+  background: #d5d5d5;
+  background: linear-gradient(to bottom, rgba(213, 213, 213, 0) 0%, #d5d5d5 8%, #d5d5d5 92%, rgba(213, 213, 213, 0) 100%);
+  z-index: 5;
+}
+.how-it-works .timeline li {
+  padding: 2em 0;
+}
+.how-it-works .timeline .hexa {
+  width: 16px;
+  height: 10px;
+  position: absolute;
+  background: var(--color-surface);
+  z-index: 5;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  top: -30px;
+  margin-top: 0;
+}
+.how-it-works .timeline .hexa:before {
+  border-bottom: 4px solid var(--color-surface);
+  border-left-width: 8px;
+  border-right-width: 8px;
+  top: -4px;
+}
+.how-it-works .timeline .hexa:after {
+  border-left-width: 8px;
+  border-right-width: 8px;
+  border-top: 4px solid var(--color-surface);
+  bottom: -4px;
+}
+.how-it-works .direction-l,
+.how-it-works .direction-r {
+  float: none;
+  width: 100%;
+  text-align: center;
+}
+.how-it-works .flag-wrapper {
+  text-align: center;
+  position: relative;
+}
+.how-it-works .flag {
+  position: relative;
+  display: inline;
+  background: white;
+  font-weight: 600;
+  z-index: 15;
+  padding: 6px 10px;
+  text-align: left;
+  border-radius: 5px;
+}
+.how-it-works .direction-l .flag:after,
+.how-it-works .direction-r .flag:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -15px;
+  height: 0;
+  width: 0;
+  margin-left: -8px;
+  border: solid transparent;
+  border-bottom-color: white;
+  border-width: 8px;
+  pointer-events: none;
+}
+.how-it-works .direction-l .flag {
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.how-it-works .direction-r .flag {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
+.how-it-works .time-wrapper {
+  display: block;
+  position: relative;
+  margin: 4px 0 0 0;
+  z-index: 14;
+  line-height: 1em;
+  vertical-align: middle;
+  color: #fff;
+}
+.how-it-works .direction-l .time-wrapper {
+  float: none;
+}
+.how-it-works .direction-r .time-wrapper {
+  float: none;
+}
+.how-it-works .time {
+  background: var(--color-surface);
+  display: inline-block;
+  padding: 8px;
+}
+.how-it-works .desc {
+  position: relative;
+  margin: 1em 0 0 0;
+  padding: 1em;
+  background: #fefefe;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+  z-index: 15;
+}
+.how-it-works .direction-l .desc,
+.how-it-works .direction-r .desc {
+  position: relative;
+  margin: 1em 1em 0 1em;
+  padding: 1em;
+  z-index: 15;
+}
+@media (min-width: 768px) {
+  .how-it-works .timeline {
+    width: 660px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .how-it-works .timeline li:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+  .how-it-works .timeline .hexa {
+    left: -28px;
+    right: auto;
+    top: 8px;
+  }
+  .how-it-works .timeline .direction-l .hexa {
+    left: auto;
+    right: -28px;
+  }
+  .how-it-works .direction-l {
+    position: relative;
+    width: 310px;
+    float: left;
+    text-align: right;
+  }
+  .how-it-works .direction-r {
+    position: relative;
+    width: 310px;
+    float: right;
+    text-align: left;
+  }
+  .how-it-works .flag-wrapper {
+    display: inline-block;
+  }
+  .how-it-works .flag {
+    font-size: 18px;
+  }
+  .how-it-works .direction-l .flag:after {
+    left: auto;
+    right: -16px;
+    top: 50%;
+    margin-top: -8px;
+    border: solid transparent;
+    border-left-color: #fefefe;
+    border-width: 8px;
+  }
+  .how-it-works .direction-r .flag:after {
+    top: 50%;
+    margin-top: -8px;
+    border: solid transparent;
+    border-right-color: #fefefe;
+    border-width: 8px;
+    left: -8px;
+  }
+  .how-it-works .time-wrapper {
+    display: inline;
+    vertical-align: middle;
+    margin: 0;
+  }
+  .how-it-works .direction-l .time-wrapper {
+    float: left;
+  }
+  .how-it-works .direction-r .time-wrapper {
+    float: right;
+  }
+  .how-it-works .time {
+    padding: 5px 10px;
+  }
+  .how-it-works .direction-r .desc {
+    margin: 1em 0 0 0.75em;
+  }
+}
+@media (min-width: 992px) {
+  .how-it-works .timeline {
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  .how-it-works .direction-l {
+    position: relative;
+    width: 380px;
+    float: left;
+    text-align: right;
+  }
+  .how-it-works .direction-r {
+    position: relative;
+    width: 380px;
+    float: right;
+    text-align: left;
+  }
+}
 
 .wrapper {
-  background: no-repeat url("/img/doctor-pointing-to-blank-sign-poster-vector.webp");
+  background: no-repeat url("/images/doctor-pointing-to-blank-sign-poster-vector.webp");
   background-size: contain;
   opacity: 0.9;
   z-index: 0;

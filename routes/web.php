@@ -14,17 +14,18 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
+Route::get('/pharmacy', 'App\Http\Controllers\HomeController@pharmacy')->name('home.pharmacy');
 
 Route::namespace('App\Http\Controllers')->middleware(['auth'])->group(function() {
     Route::resource('pharmacies', 'PharmaciesController');
     Route::resource('products', 'ProductsController');
     Route::resource('products', 'ProfilesController');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@home')->name('home.user');
     Route::post('/query', [App\Http\Controllers\QueriesController::class, 'show'])->name('query');
 });
-

@@ -1,22 +1,20 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Medicare | @yield('title')</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="icon" href="{{ asset('images/helping-hands-giving-back.png') }}" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
-                    <div> <img src="img/helping-hands-giving-back.png" alt="" class="rounded me-3" height="30px">   </div>
+                <a class="navbar-brand d-flex" href="{{ route('home.user') }}">
+                    <div> <img src="images/helping-hands-giving-back.png" alt="" class="rounded me-3" height="30px">   </div>
                     <div>MediCare</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -54,7 +52,7 @@
                             </li>
                             <li class="nav-item">
                                 @can('update', auth()->user()->pharmacy)
-                                 <a class="nav-link" href="/pharmacy/{{ Auth::user()->pharmacy->id }}">Pharmacy</a>
+                                 <a class="nav-link" href="{{ route('pharmacies.show', Auth::user()->pharmacy->id) }}">Pharmacy</a>
                                 @endcan
                             </li>
                             <li class="nav-item dropdown">
@@ -80,12 +78,12 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
 
-        <footer class="footer bg-dark p-4 w-100">
-            <div><a href="/pharmacy">For Pharmacies</a></div>
+        <footer class="p-4 w-100">
+            <div><a href="{{ route('home.pharmacy') }}">For Pharmacies</a></div>
             <div class="container text-center py-3">
                 <p class="mb-0">© {{ date('Y') }} 
                     <a href="https://github.com/JimmyKurui/CS_PROJECT1" class="text-decoration-none">Jimmy Chepkurui</a>
@@ -97,6 +95,5 @@
 
     <script src="{{ asset('js/app.js') }}"></script>
     @stack('scripts')
-</script>
 </body>
 </html> 

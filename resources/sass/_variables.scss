@@ -1,5 +1,5 @@
 // Body
-$body-bg: #e0fbfc;
+$body-bg: #f8f9fa;
 
 // Typography
 $font-family-sans-serif: "Nunito", sans-serif;
@@ -27,6 +27,7 @@ $neutral-500: #253237ff;
 
 // Theme colors
 $jet: #353535ff;
+$teal-light: #31aab1;
 $caribbean-current: #3c6e71ff;
 $white: #ffffffff;
 $platinum: #d9d9d9ff;
@@ -43,7 +44,7 @@ $indigo-dye: #284b63ff;
     --color-secondary: #{$white};
     --color-accent: #{$indigo-dye};
     --color-background: #{$body-bg};
-    --color-surface: #{$white};
+    --color-surface: #{$teal-light};
     --color-border: #{$platinum};
     --color-text: #{$jet};
     --color-text-light: #{$neutral-300};

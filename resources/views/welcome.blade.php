@@ -7,7 +7,7 @@
 
     <title>MediCare</title>
 
-    <link rel="icon" href="{{ asset('img/helping-hands-giving-back.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('images/helping-hands-giving-back.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 
@@ -19,11 +19,13 @@
                 Your browser does not support the video tag.
             </video>
         </header>
+        
         @if (Route::has('login'))
         <nav class="d-flex p-5 justify-content-end">
             @auth
-            <a href="{{ route('home') }}" class=" mx-4">Home</a>
+            <a href="{{ route('home.user') }}" class=" mx-4">Home</a>
             @else
+            <a href="{{ route('home.pharmacy') }}" class=" mx-4">Pharmacy</a>
             <a href="{{ route('login') }}" class=" mx-4">Log In</a>
             @endauth
         </nav>
